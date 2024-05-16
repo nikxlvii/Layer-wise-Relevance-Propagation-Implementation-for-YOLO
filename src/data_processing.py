@@ -40,8 +40,8 @@ class DataProcessing:
 
         relevance_scores = relevance_scores.numpy()
         relevance_scores = cv2.normalize(
-            relevance_scores, None, 0, 255, cv2.NORM_MINMAX, dtype =  cv2.CV_8UC1
+            relevance_scores, None, 0, 255, cv2.NORM_MINMAX, dtype =  cv2.CV_8UC1 
         )
         relevance_scores = cv2.applyColorMap(relevance_scores, cv2.COLORMAP_HOT)
-        
+
         return relevance_scores
