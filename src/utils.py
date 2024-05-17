@@ -2,6 +2,7 @@ from src.lrp_layers import *
 
 def layers_lookup() -> dict:
 
+
     lookup_table = {
         torch.nn.modules.linear.Linear: RelevancePropagationLinear,
         torch.nn.modules.conv.Conv2d: RelevancePropagationConv2d,

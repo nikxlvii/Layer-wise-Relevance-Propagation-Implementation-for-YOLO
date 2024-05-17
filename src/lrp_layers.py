@@ -4,6 +4,7 @@ from torch import nn
 from src.lrp_filter import relevance_filter
 
 
+
 class RelevancePropagationAdaptiveAvgPool2d(nn.Module):
 
     def __init__(
@@ -178,7 +179,7 @@ class RelevancePropagationDropout(nn.Module):
     def forward(self, a:torch.tensor, r: torch.tensor) -> torch.tensor:
         return r
     
-    
+
 class RelevancePropagationIdentity(nn.Module):
 
     def __init__(self,layer: nn.Module, top_k: float = 0.0) -> None:
