@@ -51,6 +51,7 @@ class RelevancePropagationAvgPool2d(nn.Module):
         r = (a * c).data
         return r
     
+    
 class RelevancePropagationMaxPool2d(nn.Module):
 
     def __init__(
@@ -79,6 +80,7 @@ class RelevancePropagationMaxPool2d(nn.Module):
         c = a.grad
         r = (a * c).data
         return r
+    
     
 class RelevancePropagationConv2d(nn.Module):
 
@@ -143,6 +145,7 @@ class RelevancePropagationLinear(nn.Module):
         r = (a * c).data
         return r
     
+    
 class RelevancePropagationFlatten(nn.Module):
 
     def __init__(self,layer:torch.nn.Flatten, top_k: float = 0.0) -> None:
@@ -155,6 +158,17 @@ class RelevancePropagationFlatten(nn.Module):
         r = r.view(size = a.shape)
         return r
     
+class RelevancePropagationReLU(nn.Module):
+
+    def __init__(self,layer: torch.nn.ReLU, top_k: float = 0.0) -> None:
+        super().__init__()
+
+    @torch.no_grad()
+
+    def forward(self, a:torch.tensor, r: torch.tensor) -> torch.tensor:
+        return r
+    
+
 class RelevancePropagationDropout(nn.Module):
 
     def __init__(self,layer:torch.nn.Dropout, top_k: float = 0.0) -> None:
@@ -163,6 +177,7 @@ class RelevancePropagationDropout(nn.Module):
     @torch.no_grad()
     def forward(self, a:torch.tensor, r: torch.tensor) -> torch.tensor:
         return r
+    
     
 class RelevancePropagationIdentity(nn.Module):
 
